@@ -1,0 +1,4 @@
+const server=require("../signin")
+const config=require("../signconfig")
+const port=config.PORT
+server.listen(port,()=>console.log(`server started at ${port}`)) 
