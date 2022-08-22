@@ -1,11 +1,14 @@
 import React, { useState } from "react"
 import"./styles/react.css"
+import { useNavigate } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css"
 import Category from "./category"
 import axios from "axios"
+
 export default  function Signin() {
     const[username,setusername]=useState("")
     const [password,setpassword]=useState("")
+    const navigate=useNavigate()
     function handlechange(e){
         if(e.target.name==="username")
         setusername(e.target.value)
@@ -18,7 +21,10 @@ export default  function Signin() {
             username:username,
             password:password
 
-        }).then((res)=>console.log(res))
+        }).then((res)=>{console.log(res)
+          localStorage.setItem("usertoken",res.data.token)
+       navigate("/afterlogin")
+        })
     }
   return (<>
   <Category/>
@@ -51,9 +57,7 @@ export default  function Signin() {
               Submit
             </button>
           </div>
-          <p className="forgot-password text-right mt-2">
-            Forgot <a href="#">password?</a>
-          </p>
+         
         </div>
       </form>
     </div>

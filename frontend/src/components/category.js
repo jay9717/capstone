@@ -22,9 +22,9 @@ const Category=()=>{
         </div><div className="col" >
         <div className="p-3 "> <Link to={"/decor"} style={{textDecoration:'none',color:'white',fontSize:20}}>Decor</Link></div>
         </div><div className="col" >
-        <div className="p-3 "> <Link to={"/"} style={{textDecoration:'none',color:'white',fontSize:20}}>Lighting </Link></div>
+        <div className="p-3 "> <Link to={"/lightening"} style={{textDecoration:'none',color:'white',fontSize:20}}>Lighting </Link></div>
         </div><div className="col" >
-        <div className="p-3 "> <Link to={"/"} style={{textDecoration:'none',color:'white',fontSize:20}}>Carpets</Link></div>
+        <div className="p-3 "> <Link to={"/carpet"} style={{textDecoration:'none',color:'white',fontSize:20}}>Carpets</Link></div>
         </div>
         </div>
         </div>

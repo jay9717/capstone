@@ -36,7 +36,7 @@ const UserHome=()=>{
     if(d)
     navigate("/decor")
     if(w)
-    navigate("/wallaccents")
+    navigate("/wallaccent")
     if(s)
     navigate("/sofa")
   }

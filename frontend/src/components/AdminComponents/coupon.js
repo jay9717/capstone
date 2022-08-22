@@ -1,61 +1,69 @@
-import React, { useState } from "react"
+import React,{useState}from "react"
 import"../styles/react.css"
 import "bootstrap/dist/css/bootstrap.min.css"
 import Category from "../category"
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
-export default  function AdminSignin() {
-    const[username,setusername]=useState("")
-    const [password,setpassword]=useState("")
-    const navigate=useNavigate()
+import Adminnav from "./adminnavbar"
+export default function Coupon() {
+    const[code,setcode]=useState("")
+    const [value,setvalue]=useState("")
     function handlechange(e){
-        if(e.target.name==="username")
-        setusername(e.target.value)
-        if(e.target.name==="password")
-        setpassword(e.target.value)
+        if(e.target.name==="code")
+        setcode(e.target.value)
+        if(e.target.name==="value")
+        setvalue(e.target.value)
+       
     }
+
     function submit(e){
         e.preventDefault()
-        axios.post("http://localhost:3001/adminlogin",{
-            username:username,
-            password:password
-
-        }).then((res)=>{localStorage.setItem("admintoken",res.data.token);navigate("/adminhome")})
+        axios.post("http://localhost:3002/admin/createcoupon",{
+            code:code,
+            value:value
+            
+        }).then((res)=>console.log(res))
+        document.getElementById("msg").innerHTML="coupon created"
+        setTimeout(()=>document.getElementById("msg").innerHTML="",3000)
     }
+
   return (<>
+  <Adminnav/>
   <Category/>
     <div className="Auth-form-container">
       <form className="Auth-form">
         <div className="Auth-form-content">
-          <h3 className="Auth-form-title">Sign In</h3>
+          <h3 className="Auth-form-title">Coupon Creation</h3>
           <div className="form-group mt-3">
-            <label>username</label>
+            <label>Coupon Code</label>
             <input
               type="text"
               className="form-control mt-1"
-              placeholder="Enter username"
-              name="username"
+              placeholder="Enter coupon code"
+              name="code"
               onChange={(e)=>{handlechange(e)}}
             />
           </div>
           <div className="form-group mt-3">
-            <label>Password</label>
+            <label>Coupon Value</label>
             <input
-              type="password"
+              type="Number"
               className="form-control mt-1"
-              placeholder="Enter password"
-              name="password"
+              placeholder="Enter coupon value"
+              name="value"
               onChange={(e)=>{handlechange(e)}}
             />
           </div>
+         
           <div className="d-grid gap-2 mt-3">
             <button type="submit" className="btn btn-primary" onClick={submit}>
               Submit
             </button>
           </div>
+          <h5 id="msg"></h5>
         </div>
       </form>
     </div>
+    
     </>
   )
 }

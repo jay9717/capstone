@@ -55,3 +55,10 @@ label {
         .nav{
           background-color: pink;
         }
+
+        #image{
+          width:30%;
+          height:20%;
+          margin-top:2%;
+          margin-left:35%
+        }

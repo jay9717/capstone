@@ -4,7 +4,8 @@ const bp=require("body-parser")
 app.use(bp.json())
 const cors=require("cors")
 app.use(cors())
-
+const upload=require("express-fileupload")
+app.use(upload())
 const userrouter=require("./routes/userroutes")
 const adminrouter=require("./routes/adminroute")
 

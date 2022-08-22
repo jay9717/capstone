@@ -121,11 +121,18 @@ controller.createbook=async(req,res)=>{
       if(availableproduct)
      { res.send("product already exists")}
       else{
+        const fileName=req.files.uploadFiles.name
+        const file=req.files.uploadFiles
+        const uploadPath="E:/wipro/finalcapstone/frontend/src/image/"+fileName
+       file.mv(uploadPath)
+
      const data=await productmodel.create({
       ProductName:body.productname,
       ProductCompany:body.productcompany,
       Quantity:body.quantity,
-      Cost:body.cost
+      Cost:body.cost,
+      Category:body.category,
+      Image:fileName
      
     })
     if(data){
@@ -157,10 +164,11 @@ controller.createbook=async(req,res)=>{
       
       // controller for updating products by admin
       controller.updatebook=async(req,res)=>{
-        const id=req.params       
-        const newproductname=req.body.newproductname
+        const par=req.params       
+        const newproductquantity=req.body.newproductquantity
+        console.log(newproductquantity)
         try{
-          const book=await productmodel.findOneAndUpdate({_id:id},{ProductName:newproductname})
+          const book=await productmodel.findOneAndUpdate({_id:par.id},{Quantity:newproductquantity})
           if(book)
           res.send({
                   message:"product name updated successfully",

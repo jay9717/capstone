@@ -26,7 +26,10 @@ export default function Signup() {
             password:password,
             gender:gender,
             phoneno:phone
-        }).then((res)=>console.log(res))
+        }).then((res)=>{console.log(res)
+          document.getElementById("msg").innerHTML="registered successfully please login"
+          setTimeout(()=>document.getElementById("msg").innerHTML="",3000)
+        })
     }
 
   return (<><Category/>
@@ -80,12 +83,11 @@ export default function Signup() {
               Submit
             </button>
           </div>
-          <p className="forgot-password text-right mt-2">
-            Forgot <a href="#">password?</a>
-          </p>
+         
         </div>
       </form>
     </div>
+    <p id="msg"></p>
     </>
   )
 }

@@ -99,7 +99,7 @@ usercontroller.register=async(req,res)=>{
 usercontroller.read=async(req,res)=>{
             const productid=req.params.id
             try{
-            const adcart=await productmodel.findOneAndUpdate({id:productid},{addToCart:true})
+            const adcart=await productmodel.findOneAndUpdate({_id:productid},{addToCart:true})
             if(adcart){
             res.send({message:"added to cart section",status:true})
            }
@@ -134,7 +134,7 @@ usercontroller.getreadbook=async(req,res)=>{
 usercontroller.like=async(req,res)=>{
             const productid=req.params.id
             try{
-           const addwishlist=await productmodel.findOneAndUpdate({id:productid},{WishList:true})
+           const addwishlist=await productmodel.findOneAndUpdate({_id:productid},{WishList:true})
            if(addwishlist){
              res.send({message:"added to wishlist section",status:true})
            }

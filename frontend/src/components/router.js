@@ -3,12 +3,19 @@ import {Link,Routes,Route,BrowserRouter, Navigate} from 'react-router-dom'
 import AdminHome from "./AdminComponents/adminhome"
 import AdminSignin from "./AdminComponents/adminsignin"
 import AdminSignup from "./AdminComponents/adminsignup"
+import Coupon from "./AdminComponents/coupon"
 import AdminCreateProduct from "./AdminComponents/createproduct"
+import Update from "./AdminComponents/update"
 import UserProduct from "./AdminComponents/userproduct"
+import Afterlogin from "./afteruserlogin"
+import {Cart, Wishlist } from "./cart"
 import Home from "./home"
-import {Sofa,Decor,Recliners,Wallacent} from "./imagecomponent/sofa"
+import Error from "./errorpage"
+import {Sofa,Decor,Recliners,Wallacent, Carpets, Lightening} from "./imagecomponent/sofa"
 import Signin from "./signin"
 import Signup from "./signup"
+import Protected from "./protectedcomponents"
+import AProtected from "./AdminComponents/adminprotected"
 
 const Router=()=>{
     return(<>
@@ -19,13 +26,21 @@ const Router=()=>{
          <Route path="/wallaccent" element={<Wallacent/>}></Route>
          <Route path="/recliners" element={<Recliners/>}></Route>
          <Route path="/decor" element={<Decor/>}></Route>
+         <Route path="/lightening" element={<Lightening/>}></Route>
+         <Route path="/carpet" element={<Carpets/>}></Route>
          <Route path="/" element={<Home/>}></Route>
          <Route path="/signin" element={<Signin/>}></Route>
          <Route path="/signup" element={<Signup/>}></Route>
          <Route path="/adminsignin" element={<AdminSignin/>}></Route>
          <Route path="/adminsignup" element={<AdminSignup/>}></Route>
          <Route path="/adminhome" element={<AdminHome/>}></Route>
-         <Route path="/userproduct" element={<UserProduct/>}></Route>
+         <Route path="/userproduct" element={<Protected Cmp={UserProduct}/>}></Route>
+         <Route path="/afterlogin" element={<Protected Cmp={Afterlogin}/>}></Route>
+         <Route path="/usercart" element={<Protected Cmp={Cart}/>}></Route>
+         <Route path="/coupon" element={<Protected Cmp={Coupon}/>}></Route>
+         <Route path="/update/:id" element={<Protected Cmp={Update}/>}></Route>
+         <Route path="/userwishlist" element={<Protected Cmp={Wishlist}/>}></Route>
+         <Route path="/err" element={<Error/>}></Route>
          <Route path="/admincreateproduct" element={<AdminCreateProduct/>}></Route>
          </Routes>
          </BrowserRouter>

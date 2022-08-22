@@ -3,15 +3,18 @@ import"../styles/react.css"
 import "bootstrap/dist/css/bootstrap.min.css"
 import Category from "../category"
 import axios from "axios"
+import FormData from 'form-data'
 
 
 export default  function AdminCreateProduct() {
-    const[pname,setpname]=useState("")
+    const[pname,setpname]=useState(null)
     const [pcompany,setpcompany]=useState("")
     const [quantity,setquantity]=useState("")
     const [cost,setcost]=useState("")
+    const [category,setcategory]=useState("")
+    const [file,setfile]=useState(null)
     function handlechange(e){
-        if(e.target.name==="productname")
+        if(e.target.name==="pname")
         setpname(e.target.value)
         if(e.target.name==="company")
         setpcompany(e.target.value)
@@ -19,29 +22,44 @@ export default  function AdminCreateProduct() {
         setquantity(e.target.value)
         if(e.target.name==="cost")
         setcost(e.target.value)
+        if(e.target.name==="category")
+        setcategory(e.target.value)
     }
-    function submit(e){ e.preventDefault()
-      axios.post("http://localhost:3002/admin/createproduct",{
-         ProductName:pname
+    const upload=(e)=>{
+      setfile(e.target.files[0])
+  }
 
-        }).then((res)=>console.log(res)).catch((err)=>console.log(err))
+    function submit(e){ e.preventDefault()
+      const formdata=new FormData()
+      formdata.append("uploadFiles",file)
+      formdata.append("productname",pname)
+      formdata.append("productcompany",pcompany)
+      formdata.append("cost",cost)
+      formdata.append("quantity",quantity)
+      formdata.append("category",category)
+
+      axios.post("http://localhost:3002/admin/createproduct",formdata).then((res)=>{
+        document.getElementById("msg").innerHTML="coupon created"
+        setTimeout(()=>document.getElementById("msg").innerHTML="",3000)  
+      console.log(res)}).catch((err)=>console.log(err))
     }
   return (<>
-  <Category/>
+  <Category/><br/><br/><br/><br/><br/>
     <div className="Auth-form-container">
       <form className="Auth-form">
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">ProductCreation</h3>
           <div className="form-group mt-3">
-            <label>ProductName</label>
+            <label>ProductCategory</label>
             <input
               type="text"
               className="form-control mt-1"
-              placeholder="Enter name"
-              name="productname"
+              placeholder="Enter category"
+              name="category"
               onChange={(e)=>{handlechange(e)}}
             />
           </div>
+          
           <div className="form-group mt-3">
             <label>ProductCompany</label>
             <input
@@ -49,6 +67,16 @@ export default  function AdminCreateProduct() {
               className="form-control mt-1"
               placeholder="Enter company name"
               name="company"
+              onChange={(e)=>{handlechange(e)}}
+            />
+          </div>
+          <div className="form-group mt-3">
+            <label>ProductName</label>
+            <input
+              type="text"
+              className="form-control mt-1"
+              placeholder="Enter product name"
+              name="pname"
               onChange={(e)=>{handlechange(e)}}
             />
           </div>
@@ -72,15 +100,21 @@ export default  function AdminCreateProduct() {
               onChange={(e)=>{handlechange(e)}}
             />
           </div>
-
+          <div className="form-group mt-3">
+            <label>Product Image</label>
+            <input
+              type="file"
+              className="form-control mt-1"
+              placeholder="Enter product image"
+              onChange={(e)=>{upload(e)}}
+            />
+          </div>
           <div className="d-grid gap-2 mt-3">
             <button type="submit" className="btn btn-primary" onClick={submit}>
               Submit
             </button>
           </div>
-          <p className="forgot-password text-right mt-2">
-            Forgot <a href="#">password?</a>
-          </p>
+           <p id="msg"></p>
         </div>
       </form>
     </div>
