@@ -39,8 +39,8 @@ export default  function AdminCreateProduct() {
       formdata.append("category",category)
 
       axios.post("http://localhost:3002/admin/createproduct",formdata).then((res)=>{
-        document.getElementById("msg").innerHTML="coupon created"
-        setTimeout(()=>document.getElementById("msg").innerHTML="",3000)  
+        document.getElementById("msg").innerHTML="product created"
+         
       console.log(res)}).catch((err)=>console.log(err))
     }
   return (<>
@@ -114,7 +114,7 @@ export default  function AdminCreateProduct() {
               Submit
             </button>
           </div>
-           <p id="msg"></p>
+           <h2 id="msg" style={{color:"green"}}></h2>
         </div>
       </form>
     </div>

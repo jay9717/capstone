@@ -21,13 +21,18 @@ export default  function Signin() {
             username:username,
             password:password
 
-        }).then((res)=>{console.log(res)
-          localStorage.setItem("usertoken",res.data.token)
-       navigate("/afterlogin")
+        }).then((res)=>{if(res.data.message==="login success")
+          {localStorage.setItem("usertoken",res.data.token)
+          console.log(res.data)
+          localStorage.setItem("coupon",res.data.data.username)
+       navigate("/afterlogin")}
+       else
+       document.getElementById("msg").innerHTML=res.data.message
         })
     }
   return (<>
-  <Category/>
+  <Category/><br/>
+  <h4 id="msg" style={{color:'red',textAlign:'center'}}></h4>
     <div className="Auth-form-container">
       <form className="Auth-form">
         <div className="Auth-form-content">

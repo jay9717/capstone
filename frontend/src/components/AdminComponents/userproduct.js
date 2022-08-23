@@ -13,7 +13,9 @@ const UserProduct=()=>{
     function updateproduct(e){
       console.log(e.currentTarget.id)
      const itemid=e.currentTarget.id
-     axios.put(`http://localhost:3002/admin/updateproduct/${itemid}`).then((res)=>console.log(res))
+     axios.put(`http://localhost:3002/admin/updateproduct/${itemid}`,{
+        Quantity:50
+     }).then((res)=>console.log(res))
     
     }
     

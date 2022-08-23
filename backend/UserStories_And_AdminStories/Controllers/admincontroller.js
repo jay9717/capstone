@@ -4,6 +4,8 @@ const usercontroller = require("./usercontroller")
 const bcrypt=require("bcrypt")
 const jwt=require("jsonwebtoken")
 const privatekey="jsoncapstoneprojectprivatekey"
+
+
 const controller={}
 
 //controller for login admin
@@ -146,7 +148,7 @@ controller.createbook=async(req,res)=>{
     }
     
 
-    //controller for deleting bookess by admin
+    //controller for deleting products by admin
     controller.deletebook=async(req,res)=>{
         const body=req.params
       try{
@@ -242,4 +244,11 @@ controller.createbook=async(req,res)=>{
         catch(err){console.log(err)}
       }
 
+        
+     
+
+
+  
+
+     
 module.exports=controller

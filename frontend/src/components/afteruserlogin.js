@@ -20,6 +20,8 @@ const Afterlogin=()=>{
        }
 
     const logout=()=>{
+        localStorage.removeItem("usertoken")
+        localStorage.removeItem("coupon")
      navigate("/")
     }
     
@@ -66,6 +68,8 @@ const Afterlogin=()=>{
              
            </div>
             <Category/>
+            <br/>
+            
           
            {product.length>0?product.map((item)=>(
             <>

@@ -28,7 +28,7 @@ export default function Signup() {
             phoneno:phone
         }).then((res)=>{console.log(res)
           document.getElementById("msg").innerHTML="registered successfully please login"
-          setTimeout(()=>document.getElementById("msg").innerHTML="",3000)
+          
         })
     }
 
@@ -82,12 +82,13 @@ export default function Signup() {
             <button type="submit" className="btn btn-primary" onClick={submit}>
               Submit
             </button>
+            <h5 id="msg" style={{color:'green'}}></h5>
           </div>
          
         </div>
       </form>
     </div>
-    <p id="msg"></p>
+    
     </>
   )
 }

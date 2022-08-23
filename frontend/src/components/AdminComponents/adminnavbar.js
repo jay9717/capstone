@@ -1,9 +1,10 @@
 import React  from "react";
 import {Link,NavLink,Navigate, useNavigate} from 'react-router-dom'
 import"../styles/react.css"
-
+import FormData from 'form-data'
 
 const Adminnav=()=>{
+
     function createcoupon(){
         navigate("/coupon")
     }
@@ -21,13 +22,20 @@ const Adminnav=()=>{
         navigate("/")}
     const adminHome=()=>{navigate("/")}
    
+    const upload=(e)=>{
+       navigate("/upload")
+    
+   }
     return(
         <>        
        <div className="conatiner p-1 bg-danger px-4" >
        <div className="row gx-1">
-       <div className="col" >
-        <div className="p-3"></div></div>
+       
          
+        <div className="col" >
+        <div className="p-3"> <button className="btn btn-primary" style={{width:150}}onClick={upload}>bulk upload</button></div>
+        </div>
+
         <div className="col" >
         <div className="p-3"> <button className="btn btn-primary" style={{width:150}}onClick={createcoupon}>create coupon</button></div>
         </div>

@@ -26,10 +26,14 @@ export default function AdminSignup() {
             password:password,
             gender:gender,
             phoneno:phone
-        }).then((res)=>console.log(res))
+        }).then((res)=>{console.log(res)
+          document.getElementById("msg").innerHTML=res.data.message
+          
+        })
     }
 
   return (<><Category/>
+  <h3 id="msg" style={{color:'green',textAlign:'center'}} ></h3>
     <div className="Auth-form-container">
       <form className="Auth-form">
         <div className="Auth-form-content">

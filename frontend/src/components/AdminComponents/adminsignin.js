@@ -20,10 +20,15 @@ export default  function AdminSignin() {
             username:username,
             password:password
 
-        }).then((res)=>{localStorage.setItem("admintoken",res.data.token);navigate("/adminhome")})
-    }
+        }).then((res)=>{
+          if(res.data.message==="login success")
+          {localStorage.setItem("admintoken",res.data.token);navigate("/adminhome")}
+        else
+        document.getElementById("msg").innerHTML=res.data.message
+    })}
   return (<>
-  <Category/>
+  <Category/><br/>
+  <h4 id="msg" style={{color:'red',textAlign:'center'}}></h4>
     <div className="Auth-form-container">
       <form className="Auth-form">
         <div className="Auth-form-content">

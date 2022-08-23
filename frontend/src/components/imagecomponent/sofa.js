@@ -45,7 +45,11 @@ const Sofa=()=>{
        }
 
        useEffect(()=>{
-        axios.get("http://localhost:3002/admin/home").then((res)=>{setimage(res.data.data.products)
+        axios.get("http://localhost:3002/admin/home").then((res)=>{
+            if(res.data!=="no products and users")
+            setimage(res.data.data.products)
+            else
+            document.getElementById("msg").innerHTML=res.data
        
       })
        },[])
@@ -56,9 +60,9 @@ const Sofa=()=>{
             <input type="search" placeholder="search"  onChange={(e)=>{search(e)}}/>&nbsp;
             <button onClick={Search} className='btn' style={{color:"white"}}>search</button> &nbsp;
              <button className='btn btn-primary'onClick={logout} id="button">Logout</button>&nbsp;
-             
            </div>
-
+           <br/>
+      <h3 id="msg"></h3>
 
         {image.length>0?image.map((item)=>(
             <>
@@ -151,7 +155,10 @@ const Decor=()=>{ const [s,sets]=useState(false)
        }
 
        useEffect(()=>{
-        axios.get("http://localhost:3002/admin/home").then((res)=>{setimage(res.data.data.products)
+        axios.get("http://localhost:3002/admin/home").then((res)=>{if(res.data!=="no products and users")
+        setimage(res.data.data.products)
+        else
+        document.getElementById("msg").innerHTML=res.data
        
       })
        },[])
@@ -164,7 +171,7 @@ const Decor=()=>{ const [s,sets]=useState(false)
           <button className='btn btn-primary'onClick={logout} id="button">Logout</button>&nbsp;
           
         </div>
-
+        <h3 id="msg"></h3>
 
 {image.length>0?image.map((item)=>(
             <>
@@ -227,7 +234,11 @@ const Recliners=()=>{ const [s,sets]=useState(false)
        }
 
        useEffect(()=>{
-        axios.get("http://localhost:3002/admin/home").then((res)=>{setimage(res.data.data.products)
+        axios.get("http://localhost:3002/admin/home").then((res)=>{
+            if(res.data!=="no products and users")
+            setimage(res.data.data.products)
+            else
+            document.getElementById("msg").innerHTML=res.data
        
       })
        },[])
@@ -240,6 +251,7 @@ const Recliners=()=>{ const [s,sets]=useState(false)
           <button className='btn btn-primary'onClick={logout} id="button">Logout</button>&nbsp;
           
         </div>
+        <br/> <h3 id="msg"></h3>
 {image.length>0?image.map((item)=>(
             <>
            { item.Category==='recliners'?<div className="conatiner p-1 px-3" style={{borderWidth:1,borderStyle:'solid',display:"inline-block",backgroundColor:"green",width:320}}>
@@ -302,7 +314,11 @@ const Wallacent=()=>{ const [s,sets]=useState(false)
        }
 
        useEffect(()=>{
-        axios.get("http://localhost:3002/admin/home").then((res)=>{setimage(res.data.data.products)
+        axios.get("http://localhost:3002/admin/home").then((res)=>{
+            if(res.data!=="no products and users")
+            setimage(res.data.data.products)
+            else
+            document.getElementById("msg").innerHTML=res.data
        
       })
        },[])
@@ -313,7 +329,7 @@ const Wallacent=()=>{ const [s,sets]=useState(false)
          <button onClick={Search} className='btn' style={{color:"white"}}>search</button> &nbsp;
           <button className='btn btn-primary'onClick={logout} id="button">Logout</button>&nbsp;
           
-        </div>
+        </div><br/> <h3 id="msg"></h3>
 {image.length>0?image.map((item)=>(
             <>
            { item.Category==='wallacent'?<div className="conatiner p-1 px-3" style={{borderWidth:1,borderStyle:'solid',display:"inline-block",backgroundColor:"green",width:320}}>
@@ -379,7 +395,11 @@ const Lightening=()=>{ const [s,sets]=useState(false)
        }
 
        useEffect(()=>{
-        axios.get("http://localhost:3002/admin/home").then((res)=>{setimage(res.data.data.products)
+        axios.get("http://localhost:3002/admin/home").then((res)=>{
+            if(res.data!=="no products and users")
+            setimage(res.data.data.products)
+            else
+            document.getElementById("msg").innerHTML=res.data
        
       })
        },[])
@@ -391,7 +411,7 @@ const Lightening=()=>{ const [s,sets]=useState(false)
          <button onClick={Search} className='btn' style={{color:"white"}}>search</button> &nbsp;
           <button className='btn btn-primary'onClick={logout} id="button">Logout</button>&nbsp;
           
-        </div>
+        </div><br/> <h3 id="msg"></h3>
 {image.length>0?image.map((item)=>(
             <>
            { item.Category==='lightening'?<div className="conatiner p-1 px-3" style={{borderWidth:1,borderStyle:'solid',display:"inline-block",backgroundColor:"green"}}>
@@ -454,7 +474,11 @@ const Carpets=()=>{ const [s,sets]=useState(false)
        }
 
        useEffect(()=>{
-        axios.get("http://localhost:3002/admin/home").then((res)=>{setimage(res.data.data.products)
+        axios.get("http://localhost:3002/admin/home").then((res)=>{
+            if(res.data!=="no products and users")
+            setimage(res.data.data.products)
+            else
+            document.getElementById("msg").innerHTML=res.data
        
       })
        },[])
@@ -465,7 +489,7 @@ const Carpets=()=>{ const [s,sets]=useState(false)
          <button onClick={Search} className='btn' style={{color:"white"}}>search</button> &nbsp;
           <button className='btn btn-primary'onClick={logout} id="button">Logout</button>&nbsp;
           
-        </div>
+        </div><br/> <h3 id="msg"></h3>
 {image.length>0?image.map((item)=>(
             <>
            { item.Category==='carptes'?<div className="conatiner p-1 px-3" style={{borderWidth:1,borderStyle:'solid',display:"inline-block",backgroundColor:"green"}}>

@@ -16,6 +16,8 @@ import Signin from "./signin"
 import Signup from "./signup"
 import Protected from "./protectedcomponents"
 import AProtected from "./AdminComponents/adminprotected"
+import Upload from "./upload"
+import Order from "./order"
 
 const Router=()=>{
     return(<>
@@ -34,14 +36,16 @@ const Router=()=>{
          <Route path="/adminsignin" element={<AdminSignin/>}></Route>
          <Route path="/adminsignup" element={<AdminSignup/>}></Route>
          <Route path="/adminhome" element={<AdminHome/>}></Route>
-         <Route path="/userproduct" element={<Protected Cmp={UserProduct}/>}></Route>
+         <Route path="/userproduct" element={<AProtected Cmp={UserProduct}/>}></Route>
          <Route path="/afterlogin" element={<Protected Cmp={Afterlogin}/>}></Route>
          <Route path="/usercart" element={<Protected Cmp={Cart}/>}></Route>
-         <Route path="/coupon" element={<Protected Cmp={Coupon}/>}></Route>
+         <Route path="/coupon" element={<AProtected Cmp={Coupon}/>}></Route>
          <Route path="/update/:id" element={<Protected Cmp={Update}/>}></Route>
          <Route path="/userwishlist" element={<Protected Cmp={Wishlist}/>}></Route>
          <Route path="/err" element={<Error/>}></Route>
-         <Route path="/admincreateproduct" element={<AdminCreateProduct/>}></Route>
+         <Route path="/upload" element={<AProtected Cmp={Upload}/>}></Route>
+         <Route path="/order" element={<Order/>}></Route>
+         <Route path="/admincreateproduct" element={<AProtected Cmp={AdminCreateProduct}/>}></Route>
          </Routes>
          </BrowserRouter>
          

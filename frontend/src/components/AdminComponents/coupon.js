@@ -7,28 +7,32 @@ import Adminnav from "./adminnavbar"
 export default function Coupon() {
     const[code,setcode]=useState("")
     const [value,setvalue]=useState("")
+    const [elg,setelg]=useState("")
     function handlechange(e){
         if(e.target.name==="code")
         setcode(e.target.value)
         if(e.target.name==="value")
         setvalue(e.target.value)
-       
+        if(e.target.name==="elg")
+        setelg(e.target.value)
     }
 
     function submit(e){
         e.preventDefault()
-        axios.post("http://localhost:3002/admin/createcoupon",{
+        axios.post("http://localhost:4004/admincreatecoupon",{
             code:code,
-            value:value
+            value:value,
+            eligibility:elg
             
         }).then((res)=>console.log(res))
         document.getElementById("msg").innerHTML="coupon created"
-        setTimeout(()=>document.getElementById("msg").innerHTML="",3000)
+        
     }
 
   return (<>
   <Adminnav/>
   <Category/>
+  <h2 id="msg" style={{color:'green',textAlign:"center"}}></h2>
     <div className="Auth-form-container">
       <form className="Auth-form">
         <div className="Auth-form-content">
@@ -53,13 +57,22 @@ export default function Coupon() {
               onChange={(e)=>{handlechange(e)}}
             />
           </div>
-         
+          <div className="form-group mt-3">
+            <label>Eligibility</label>
+            <input
+              type="text"
+              className="form-control mt-1"
+              placeholder="Enter user name"
+              name="elg"
+              onChange={(e)=>{handlechange(e)}}
+            />
+          </div>
           <div className="d-grid gap-2 mt-3">
             <button type="submit" className="btn btn-primary" onClick={submit}>
               Submit
             </button>
           </div>
-          <h5 id="msg"></h5>
+          
         </div>
       </form>
     </div>
